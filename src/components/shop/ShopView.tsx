@@ -24,11 +24,12 @@ import { CloseIcon, FilterIcon, SearchIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/cn";
 
 const intro: Record<ShopFilters["occasion"], { title: string; accent: string; line: string }> = {
-  all: { title: "The", accent: "collection", line: "Every tailored piece — filter by style, colour and size." },
+  all: { title: "The", accent: "collection", line: "Every tailored piece and bag — filter by style, colour and size." },
   sheath: { title: "Sheath", accent: "dresses", line: "Sculpted, figure-skimming dresses with buttons, piping and peplums." },
   flare: { title: "Flare", accent: "dresses", line: "Fitted bodices into pleated, swinging skirts — polished with movement." },
   trouser: { title: "Trouser", accent: "sets", line: "Statement blouses over wide and flared trousers, matched head to toe." },
   skirt: { title: "Skirt", accent: "sets", line: "Wraps, plaids and peplums over sharp pencil skirts." },
+  bags: { title: "The", accent: "bags", line: "Totes, top-handles and minis to finish the look." },
 };
 
 /** Reads the filters from the URL: /shop?occasion=trouser&colour=pink,red&size=M&sort=new&q=satin */

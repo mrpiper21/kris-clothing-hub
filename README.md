@@ -12,7 +12,7 @@ npm run build   # every page is statically prerendered
 
 | Route | What it does |
 | --- | --- |
-| `/` | Hero, shop by style (Sheath, Flare, Trouser sets, Skirt sets), a scroll-reactive type band, tabbed "The edit" rail (New in / Bestsellers / Made to measure), the Kris promise, shop by colour, how to order, reviews, lookbook, personal styling |
+| `/` | Hero, shop by style (Sheath, Flare, Trouser sets, Skirt sets), a scroll-reactive type band, the bag edit, tabbed "The edit" rail (New in / Bestsellers / Made to measure), the Kris promise, shop by colour, how to order, reviews, lookbook, personal styling |
 | `/shop` | Style chips with live counts, colour / size / in-stock filters, sort, search within results. Every filter lives in the URL (`/shop?occasion=trouser&colour=black&size=M`) so a filtered view can be shared |
 | `/shop/[id]` | Swipeable gallery with full-screen preview, colour and size pickers, size-guide pop-up, "make it to my measurements", add to bag, wishlist, order now on WhatsApp, details accordions, related pieces |
 | `/bag` | Quantities, optional name / delivery area / date / note, a preview of the message, and **Send order on WhatsApp** |
@@ -42,7 +42,9 @@ Placeholders are written as `[LIKE THIS]`.
 
 **Photos:** all photography is the boutique's own, in `public/images/` (renamed to match each product, e.g. `/images/scarlet-button-sheath.jpg`). In `products.ts`, `image` is the main photo and `gallery` holds the rest; brand photos (hero, style tiles, editorial, lookbook) are set in `src/data/media.ts`. Names, fabrics and details were written from the photos — check them against real stock. `teal-button-trouser-set.jpg` carries a small "Xender" mark in the top corner; swap it for a clean copy if you have one.
 
-**Styles:** the `occasion` field now holds the style family (`sheath`, `flare`, `trouser`, `skirt`). The name and the `?occasion=` URL param were kept so existing links keep working.
+**Bags:** bag photos are in `public/images/bags/` and the bags are products with `occasion: "bags"` and `sizes: []` (no size picker is shown). The home page "Carry the look" section lists them. `colourPhoto` on a product links a colour swatch to its photo, so picking a colour shows that bag. `t-clasp-top-handle-bags-UNUSED.jpg` is not used: it shows another brand's logo and dust bag.
+
+**Styles:** the `occasion` field now holds the style family (`sheath`, `flare`, `trouser`, `skirt`, `bags`). The name and the `?occasion=` URL param were kept so existing links keep working.
 
 ## Structure
 

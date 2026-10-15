@@ -47,7 +47,7 @@ export function ProductDetail({ product }: { product: Product }) {
     <div className="mx-auto max-w-[1600px] md:px-10">
       <div className="grid grid-cols-1 md:grid-cols-12 md:gap-8 lg:gap-12">
         <div className="md:col-span-7">
-          <ProductGallery images={images} alt={productAlt(product)} />
+          <ProductGallery images={images} alt={productAlt(product)} active={product.colourPhoto?.[colour]} />
         </div>
 
         <div className="px-5 pb-32 pt-8 md:col-span-5 md:px-0 md:pb-0 md:pt-0 lg:col-span-4 lg:col-start-9">
@@ -93,36 +93,38 @@ export function ProductDetail({ product }: { product: Product }) {
               </div>
             </fieldset>
 
-            {/* Size */}
-            <motion.fieldset id="size-picker" animate={shake} className={cn("mt-8 transition-opacity", tailored && "pointer-events-none opacity-40")} disabled={tailored}>
-              <legend className="mb-3 flex w-full items-center justify-between text-sm">
-                <span>
-                  Size: <span className={needSize && !size ? "text-burgundy" : "text-ink/60"}>{size ?? (needSize ? "please choose a size" : "choose")}</span>
-                </span>
-                <button type="button" onClick={() => setGuideOpen(true)} className="pointer-events-auto flex items-center gap-1.5 text-ink/70 underline-offset-4 hover:text-burgundy hover:underline">
-                  <RulerIcon width={18} height={18} /> Size guide
-                </button>
-              </legend>
-              <div className="grid grid-cols-6 gap-1.5">
-                {product.sizes.map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    aria-pressed={size === s}
-                    onClick={() => {
-                      setSize(size === s ? null : s);
-                      setNeedSize(false);
-                    }}
-                    className={cn(
-                      "min-h-12 border text-sm transition-colors",
-                      size === s ? "border-burgundy bg-burgundy text-canvas" : needSize ? "border-burgundy/50 hover:border-burgundy" : "border-ink/15 hover:border-burgundy",
-                    )}
-                  >
-                    {s}
+            {/* Size — bags and other one-size pieces skip this */}
+            {product.sizes.length > 0 && (
+              <motion.fieldset id="size-picker" animate={shake} className={cn("mt-8 transition-opacity", tailored && "pointer-events-none opacity-40")} disabled={tailored}>
+                <legend className="mb-3 flex w-full items-center justify-between text-sm">
+                  <span>
+                    Size: <span className={needSize && !size ? "text-burgundy" : "text-ink/60"}>{size ?? (needSize ? "please choose a size" : "choose")}</span>
+                  </span>
+                  <button type="button" onClick={() => setGuideOpen(true)} className="pointer-events-auto flex items-center gap-1.5 text-ink/70 underline-offset-4 hover:text-burgundy hover:underline">
+                    <RulerIcon width={18} height={18} /> Size guide
                   </button>
-                ))}
-              </div>
-            </motion.fieldset>
+                </legend>
+                <div className="grid grid-cols-6 gap-1.5">
+                  {product.sizes.map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      aria-pressed={size === s}
+                      onClick={() => {
+                        setSize(size === s ? null : s);
+                        setNeedSize(false);
+                      }}
+                      className={cn(
+                        "min-h-12 border text-sm transition-colors",
+                        size === s ? "border-burgundy bg-burgundy text-canvas" : needSize ? "border-burgundy/50 hover:border-burgundy" : "border-ink/15 hover:border-burgundy",
+                      )}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              </motion.fieldset>
+            )}
 
             {product.tailoring && (
               <label className="mt-4 flex cursor-pointer items-start gap-3 bg-blush-soft p-4 text-sm">
@@ -152,7 +154,7 @@ export function ProductDetail({ product }: { product: Product }) {
             </div>
 
             <div className="mt-8 border-t border-ink/10">
-              <AccordionItem title="Details & fabric" defaultOpen>
+              <AccordionItem title={product.occasion === "bags" ? "Details" : "Details & fabric"} defaultOpen>
                 <ul className="list-inside list-[square] space-y-1 marker:text-petal">
                   {product.details.map((d) => <li key={d}>{d}</li>)}
                 </ul>
@@ -175,7 +177,7 @@ export function ProductDetail({ product }: { product: Product }) {
         <div className="min-w-0 flex-1 text-sm">
           <p className="truncate">{product.name}</p>
           <p className="text-ink/60">
-            {tailored ? "Made to measure" : size ? `Size ${size}` : "Choose a size"}
+            {product.sizes.length === 0 ? colours[colour].label : tailored ? "Made to measure" : size ? `Size ${size}` : "Choose a size"}
           </p>
         </div>
         <WishlistButton id={product.id} name={product.name} variant="outline" className="h-12 w-12" />

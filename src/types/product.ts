@@ -1,8 +1,8 @@
 /**
- * The style families the boutique stocks. Kept under the name `occasion`
+ * The style families the boutique stocks (and its bags). Kept under the name `occasion`
  * (and the `?occasion=` URL param) so links and filters stay stable.
  */
-export type Occasion = "sheath" | "flare" | "trouser" | "skirt";
+export type Occasion = "sheath" | "flare" | "trouser" | "skirt" | "bags";
 
 /** Keys of the colour palette in src/data/colours.ts. */
 export type ColourId =
@@ -28,7 +28,8 @@ export type ColourId =
   | "mint"
   | "teal"
   | "grey"
-  | "brown";
+  | "brown"
+  | "leopard";
 
 /**
  * A catalogue piece. There is no price: pricing is confirmed with each
@@ -44,6 +45,8 @@ export interface Product {
   image: string;
   /** Extra photographs, in order. */
   gallery?: string[];
+  /** Which photo (0 = `image`, 1 = first gallery photo…) shows each colour. */
+  colourPhoto?: Partial<Record<ColourId, number>>;
   description: string;
   /** Short fact lines: fabric, fit, length, care. */
   details: string[];

@@ -35,6 +35,7 @@ export const occasionLabel: Record<Occasion, string> = {
   flare: "Flare dresses",
   trouser: "Trouser sets",
   skirt: "Skirt sets",
+  bags: "Bags",
 };
 
 export const occasionFilters: { id: OccasionFilter; label: string }[] = [
@@ -43,6 +44,7 @@ export const occasionFilters: { id: OccasionFilter; label: string }[] = [
   { id: "flare", label: "Flare" },
   { id: "trouser", label: "Trouser sets" },
   { id: "skirt", label: "Skirt sets" },
+  { id: "bags", label: "Bags" },
 ];
 
 export const sortOptions: { id: SortId; label: string }[] = [

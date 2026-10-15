@@ -17,6 +17,9 @@ const photos = (...files: string[]) => ({
   gallery: files.slice(1).map((f) => `/images/${f}.jpg`),
 });
 
+/** Bag photos live in public/images/bags. */
+const bagPhotos = (...files: string[]) => photos(...files.map((f) => `bags/${f}`));
+
 export const products: Product[] = [
   /* ——— Sheath dresses ——— */
   {
@@ -176,6 +179,7 @@ export const products: Product[] = [
     colours: ["black", "mint", "orange"],
     sizes: CORE,
     ...photos("bell-sleeve-trouser-set-mint", "bell-sleeve-trouser-set-coral"),
+    colourPhoto: { mint: 0, orange: 1 },
     description:
       "A sculpted black blouse with pearl buttons and split bell sleeves lined in colour, over matching high-waisted trousers. Shown in mint and coral.",
     details: ["Stretch crepe blouse and trousers", "Pearl button front, split bell sleeves", "Contrast sleeve lining", "Straight-leg, high waist"],
@@ -301,5 +305,86 @@ export const products: Product[] = [
     details: ["Textured jacquard pinafore", "Collared shirt included", "Long shirt sleeves", "Knee length"],
     available: true,
     isNew: true,
+  },
+
+  /* ——— Bags ——— (no sizes, so no size picker) */
+  {
+    id: "pouch-charm-top-handle-bag",
+    name: "Pouch-Charm Top-Handle Bag",
+    occasion: "bags",
+    colours: ["black", "fuchsia", "blue", "pink"],
+    sizes: [],
+    ...bagPhotos("pouch-charm-top-handle-black", "pouch-charm-top-handle-pink", "pouch-charm-top-handle-denim", "pouch-charm-top-handle-blush"),
+    colourPhoto: { black: 0, fuchsia: 1, blue: 2, pink: 3 },
+    description:
+      "A structured top-handle bag with a gold turn-lock strap and its own mini pouch charm clipped to the handle. Shown in black, hot pink, denim blue and blush with red trim.",
+    details: ["Structured body, rolled top handle", "Gold-tone turn-lock and chain", "Detachable mini pouch charm", "Fits phone, wallet and keys"],
+    available: true,
+    isNew: true,
+    bestseller: true,
+  },
+  {
+    id: "sculpted-tote-and-pouch-set",
+    name: "Sculpted Tote & Pouch Set",
+    occasion: "bags",
+    colours: ["burgundy", "black", "leopard"],
+    sizes: [],
+    ...bagPhotos("sculpted-tote-set-burgundy", "sculpted-tote-set-black", "sculpted-tote-set-leopard", "sculpted-tote-set-leopard-styled"),
+    colourPhoto: { burgundy: 0, black: 1, leopard: 2 },
+    description:
+      "A wide, fan-shaped shoulder tote with gold clasps, paired with a matching slouchy pouch. Shown in wine, black, and leopard with black trim.",
+    details: ["Two pieces: tote and pouch", "Long shoulder straps", "Gold-tone clasp hardware", "Roomy enough for a laptop sleeve or files"],
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "woven-leaf-charm-tote",
+    name: "Woven Leaf-Charm Tote",
+    occasion: "bags",
+    colours: ["black"],
+    sizes: [],
+    ...bagPhotos("woven-leaf-charm-tote"),
+    description:
+      "Black woven leather-look tote with rolled handles and a gold leaf charm. Smart enough for the office, easy enough for the weekend.",
+    details: ["Woven faux-leather", "Rolled top handles, optional shoulder strap", "Gold-tone leaf charm", "Zip-top opening"],
+    available: true,
+    bestseller: true,
+  },
+  {
+    id: "striped-barrel-bag-set",
+    name: "Striped Barrel Bag & Purse Set",
+    occasion: "bags",
+    colours: ["taupe", "black", "green", "burgundy", "ivory", "pink", "brown"],
+    sizes: [],
+    ...bagPhotos("striped-barrel-bag-set"),
+    description:
+      "A ribbed barrel bag with a striped body and leather-look ends, sold with a matching purse. Many colourways — tell us your favourite on WhatsApp.",
+    details: ["Barrel bag with matching purse", "Top handles plus detachable strap", "Ribbed, striped body", "Gold-tone plaque"],
+    available: true,
+  },
+  {
+    id: "ring-handle-mini-bag",
+    name: "Ring-Handle Mini Bag",
+    occasion: "bags",
+    colours: ["black", "white", "sky", "green", "red", "burgundy", "gold", "brown"],
+    sizes: [],
+    ...bagPhotos("ring-handle-mini-bag"),
+    description:
+      "A rounded mini bag with a sculpted gold ring handle and a chain strap. Small, glossy and it still fits a large phone.",
+    details: ["About 21.5 × 11.5 × 8 cm", "Gold-tone ring handle", "Detachable shoulder chain", "Fits a large phone"],
+    available: true,
+    isNew: true,
+  },
+  {
+    id: "cloud-charm-tote",
+    name: "Cloud Charm Tote",
+    occasion: "bags",
+    colours: ["sky", "black", "white", "pink"],
+    sizes: [],
+    ...bagPhotos("cloud-charm-tote"),
+    description:
+      "A soft, painterly-print tote with a fluffy cloud charm. Big enough for everything, playful enough to make you smile.",
+    details: ["Printed faux-leather", "Shoulder handles", "Plush cloud charm", "Roomy everyday size"],
+    available: true,
   },
 ];

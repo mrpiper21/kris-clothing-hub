@@ -10,7 +10,7 @@ import { CursorFollower } from "@/components/motion/CursorFollower";
 import { BackToTop } from "@/components/motion/BackToTop";
 import "./globals.css";
 
-const title = `${site.name} — Tailored Dresses, Trouser & Skirt Sets`;
+const title = `${site.name} — Tailored Dresses, Sets & Handbags`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

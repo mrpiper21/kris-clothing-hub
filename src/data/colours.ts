@@ -25,6 +25,7 @@ export const colours: Record<ColourId, { label: string; hex: string }> = {
   teal: { label: "Teal", hex: "#1c8a99" },
   grey: { label: "Dove grey", hex: "#b9b3b5" },
   brown: { label: "Cocoa", hex: "#4a2c22" },
+  leopard: { label: "Leopard", hex: "#b48a52" },
 };
 
 /** Light swatches need a visible outline on white. */

@@ -9,7 +9,7 @@ import { Drawer } from "@/components/ui/Drawer";
 import { Media } from "@/components/ui/Media";
 import { SearchIcon } from "@/components/ui/Icons";
 
-const suggestions = ["Peplum", "Pleated", "Trousers", "Plaid", "Navy", "Plum", "Bow", "Fuchsia"];
+const suggestions = ["Peplum", "Pleated", "Trousers", "Plaid", "Navy", "Plum", "Tote", "Mini bag"];
 
 /** Instant search across the catalogue. Enter opens the full results in the shop. */
 export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {

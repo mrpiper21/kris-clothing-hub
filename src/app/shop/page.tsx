@@ -6,7 +6,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 
 export const metadata: Metadata = {
   title: "Shop dresses",
-  description: "Shop sculpted sheath dresses, pleated flares, trouser sets and skirt sets. Filter by colour and size.",
+  description: "Shop sculpted sheath dresses, pleated flares, trouser sets, skirt sets and handbags. Filter by colour and size.",
   alternates: { canonical: "/shop" },
   openGraph: { url: "/shop", title: "Shop the collection" },
 };

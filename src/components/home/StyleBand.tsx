@@ -10,7 +10,7 @@ export function StyleBand() {
         className="display text-[clamp(3rem,9vw,8rem)] leading-none"
       />
       <VelocityMarquee
-        words={["Sheath dresses", "Trouser sets", "Pleated flares", "Skirt sets"]}
+        words={["Sheath dresses", "Trouser sets", "Handbags", "Pleated flares", "Skirt sets"]}
         baseVelocity={1.6}
         className="display mt-2 text-[clamp(3rem,9vw,8rem)] italic leading-none text-petal"
       />

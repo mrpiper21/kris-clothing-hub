@@ -9,7 +9,7 @@ export const site = {
   shortName: "Kris",
   tagline: "Tailored for every entrance",
   description:
-    "Sculpted sheath dresses, pleated flares, trouser sets and skirt sets — tailored to flatter and delivered to your door.",
+    "Sculpted sheath dresses, pleated flares, trouser sets, skirt sets and handbags — tailored to flatter and delivered to your door.",
   location: "[BUSINESS LOCATION]",
   whatsapp: "233549671555", // international format, e.g. 233XXXXXXXXX
   phone: "233549671555",
@@ -27,6 +27,7 @@ export const nav = [
   { label: "Flare", href: "/shop?occasion=flare" },
   { label: "Trouser sets", href: "/shop?occasion=trouser" },
   { label: "Skirt sets", href: "/shop?occasion=skirt" },
+  { label: "Bags", href: "/shop?occasion=bags" },
 ] as const;
 
 /** True while a value is still an unfilled [PLACEHOLDER]. */

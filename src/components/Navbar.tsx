@@ -107,7 +107,7 @@ export function Navbar() {
           </Link>
 
           <nav aria-label="Shop by style" className="hidden justify-center lg:col-start-2 lg:row-start-1 lg:flex">
-            <ul className="flex items-center gap-8">
+            <ul className="flex items-center gap-6 xl:gap-8">
               {nav.map((item) => (
                 <li key={item.href}>
                   <Link

@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/Hero";
 import { Occasions } from "@/components/home/Occasions";
 import { ProductRail } from "@/components/home/ProductRail";
 import { StyleBand } from "@/components/home/StyleBand";
+import { BagEdit } from "@/components/home/BagEdit";
 import { Editorial } from "@/components/home/Editorial";
 import { ShopByColour } from "@/components/home/ShopByColour";
 import { HowToOrder } from "@/components/home/HowToOrder";
@@ -14,7 +15,7 @@ import { JsonLd } from "@/components/JsonLd";
 
 /*
  * The walk through the boutique:
- * window (hero) → the styles → a moving type band → the edit rail → the promise → colours
+ * window (hero) → the styles → a moving type band → the edit rail → the bags → the promise → colours
  * → how ordering works → reviews → the lookbook → a stylist.
  */
 export default async function HomePage() {
@@ -37,6 +38,7 @@ export default async function HomePage() {
       <Occasions />
       <StyleBand />
       <ProductRail products={products} />
+      <BagEdit bags={products.filter((p) => p.occasion === "bags")} />
       <Editorial />
       <ShopByColour products={products} />
       <HowToOrder />

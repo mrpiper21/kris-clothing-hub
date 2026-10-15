@@ -8,14 +8,21 @@ import { cn } from "@/lib/cn";
 type ProductGalleryProps = {
   images: string[];
   alt: string;
+  /** Jump to this photo when it changes (e.g. the visitor picked a colour). */
+  active?: number;
 };
 
 /**
  * Product photographs: a swipeable main image with thumbnails beneath.
  * Tapping the image opens a full-screen preview (arrows, swipe, keyboard).
  */
-export function ProductGallery({ images, alt }: ProductGalleryProps) {
+export function ProductGallery({ images, alt, active }: ProductGalleryProps) {
   const [index, setIndex] = useState(0);
+  const [lastActive, setLastActive] = useState(active);
+  if (active !== lastActive) {
+    setLastActive(active);
+    if (active !== undefined) setIndex(active);
+  }
   const [open, setOpen] = useState(false);
   const trackRef = useRef<HTMLUListElement>(null);
   const altFor = (i: number) => (i === 0 ? alt : `${alt} — view ${i + 1} of ${images.length}`);
@@ -26,6 +33,12 @@ export function ProductGallery({ images, alt }: ProductGalleryProps) {
     const track = trackRef.current;
     if (track) track.scrollTo({ left: next * track.clientWidth, behavior });
   }
+
+  // Slide the track to a photo chosen from outside (a colour swatch).
+  useEffect(() => {
+    const track = trackRef.current;
+    if (track && active !== undefined) track.scrollTo({ left: active * track.clientWidth, behavior: "smooth" });
+  }, [active]);
 
   function onScroll() {
     const track = trackRef.current;
